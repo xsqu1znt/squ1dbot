@@ -1,6 +1,6 @@
 # Directories
 node_modules/
-dist/
+# dist/
 
 # Sub-Files
 .vscode/settings.json
