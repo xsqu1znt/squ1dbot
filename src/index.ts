@@ -21,10 +21,19 @@ async function main() {
 
     client.status.set({
         production: {
-            activity: { name: "Check out our server!", type: ActivityType.Streaming, status: StatusType.Online }
+            interval: 60, // 1 minute
+            randomize: true,
+            activity: [
+                { name: "I'm watching you...", type: ActivityType.Custom, status: StatusType.Idle },
+                { name: "Sometimes I wonder what I'm doing here...", type: ActivityType.Custom, status: StatusType.Idle },
+                { name: "Do I know you?", type: ActivityType.Custom, status: StatusType.Idle },
+                { name: "Sweet home Alabama 🎤", type: ActivityType.Custom, status: StatusType.Idle },
+                { name: "Can I interest you in some cheese?", type: ActivityType.Custom, status: StatusType.Idle },
+                { name: "drugs.", type: ActivityType.Custom, status: StatusType.Idle }
+            ]
         },
         development: {
-            activity: { name: "Testing new features...", type: ActivityType.Custom, status: StatusType.DND }
+            activity: { name: "🧨 playing with unstable substances...", type: ActivityType.Custom, status: StatusType.DND }
         }
     });
 

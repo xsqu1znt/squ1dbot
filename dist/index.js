@@ -18,10 +18,19 @@ async function main() {
     await client.useDatabase(new vimcord_1.MongoDatabase(client));
     client.status.set({
         production: {
-            activity: { name: "Check out our server!", type: discord_js_1.ActivityType.Streaming, status: vimcord_1.StatusType.Online }
+            interval: 60, // 1 minute
+            randomize: true,
+            activity: [
+                { name: "I'm watching you...", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.Idle },
+                { name: "Sometimes I wonder what I'm doing here...", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.Idle },
+                { name: "Do I know you?", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.Idle },
+                { name: "Sweet home Alabama 🎤", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.Idle },
+                { name: "Can I interest you in some cheese?", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.Idle },
+                { name: "drugs.", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.Idle }
+            ]
         },
         development: {
-            activity: { name: "Testing new features...", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.DND }
+            activity: { name: "🧨 playing with unstable substances...", type: discord_js_1.ActivityType.Custom, status: vimcord_1.StatusType.DND }
         }
     });
     await client.start();
