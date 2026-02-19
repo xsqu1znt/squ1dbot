@@ -1,5 +1,5 @@
 {
-    "chanceForCustom": 5,
+    "chanceForCustom": 0.05,
 
     "customReplyLinks": [
         "https://cornhub.website",
