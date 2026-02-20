@@ -13,27 +13,24 @@ export default new SlashCommandBuilder({
     metadata: { category: "Global/Fun" },
 
     async execute(client, interaction) {
-        let customReply: { id: number; text: string } | undefined;
-
-        const customReplies = $.rnd.chance(WTF.chanceForCustom)
-            ? WTF.customReplies.find(c => c.userId === interaction.user.id)?.replies
+        const customReplies = $.rnd.chance(WTF.customReplyChance)
+            ? WTF.customReplies.find(c => c.userId.split(":")[1] === interaction.user.id)?.replies
             : undefined;
 
-        if (customReplies?.length) {
-            customReply = $.rnd.choice(customReplies);
-        }
-
-        const reply = customReply?.text ?? $.rnd.choice(WTF.generalReplies);
+        const customReplyIndex = customReplies?.length ? $.rnd.index(customReplies) : undefined;
+        const customReply = customReplyIndex !== undefined ? customReplies![customReplyIndex] : undefined;
 
         // Create the embed (wtf?)
         const embed_wtf = new BetterEmbed({
-            color: customReply
-                ? "#FFCB47"
-                : ["DarkRed", "Orange", "Greyple", "Aqua", "Navy", "White", "DarkButNotBlack", "LuminousVividPink"],
+            context: { interaction },
+            color: customReply ? "#FFCB47" : undefined,
             author: customReply
-                ? { text: `Custom Reply ${customReply.id}`, hyperlink: $.rnd.choice(WTF.customReplyLinks) }
-                : "WTF?",
-            description: reply
+                ? { text: `Custom Reply ${customReplyIndex}`, hyperlink: $.rnd.choice(WTF.customReplyLinks) }
+                : $.rnd.chance(WTF.titleChance)
+                  ? $.rnd.choice(WTF.titles)
+                  : "WTF?",
+            description: customReply ?? $.rnd.choice(WTF.generalReplies),
+            footer: !customReply && $.rnd.chance(WTF.footerChance) ? $.rnd.choice(WTF.footers) : undefined
         });
 
         // Reply to the interaction with the embed
