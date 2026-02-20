@@ -1,13 +1,13 @@
 export declare const WTF: {
-    chanceForCustom: number;
-    customReplyLinks: string[];
     generalReplies: string[];
+    customReplyChance: number;
+    customReplyLinks: string[];
     customReplies: {
-        username: string;
         userId: string;
-        replies: {
-            id: number;
-            text: string;
-        }[];
+        replies: string[];
     }[];
+    titleChance: number;
+    titles: string[];
+    footerChance: number;
+    footers: string[];
 };
