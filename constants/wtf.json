@@ -398,7 +398,7 @@
         }
     ],
 
-    "titleChance": 0.1,
+    "titleChance": 0.2,
     "titles": [
         "wtf?",
         "w t f ?",
@@ -436,7 +436,7 @@
         "You did this."
     ],
 
-    "footerChance": 0.05,
+    "footerChance": 0.1,
     "footers": [
         "powered by squ1dbot™ chaos engine",
         "I have nothing left.",
